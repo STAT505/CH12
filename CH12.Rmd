@@ -1,0 +1,144 @@
+---
+title: "CH 12: Transformations"
+output: pdf_document
+---
+
+\renewcommand{\vec}[1]{\mathbf{#1}}
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, fig.height = 4, fig.width = 6, fig.align = 'center')
+library(tidyverse) 
+library(rstanarm)
+library(arm)
+library(gridExtra)
+set.seed(11012020)
+```
+
+### Scaling Predictors
+
+We have seen that centering predictors makes interpreting the intercept more intuitive. 
+
+
+\vfill
+
+Beyond just centering variables, 
+
+
+\vfill
+A common standardization approach is using a z-score, 
+
+
+\vfill
+
+Standardization can use a conventional center point that makes intuitive sense, 
+
+
+\vfill
+
+\newpage
+
+### Logarithmic Transformations
+
+When additivity and linearity are not reasonable, we often need to consider nonlinear transformations. Transformation can be applied to predictors, the outcome variable, or both.
+
+\vfill
+
+With outcomes that are necessarily positive, 
+
+
+\vfill
+
+Our general linear model framework results in additive models, but consider:
+
+\begin{align*}
+\log(y) &= \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \epsilon\\
+y &= \exp \left(\beta_0 + \beta_1 x_1 + \beta_2 x_2 + \epsilon \right)\\
+y &= \exp(\beta_0) \times \exp(\beta_1 x_1) \times \exp(\beta_2 x_2) \times \exp(\epsilon)
+\end{align*}
+
+
+
+
+\newpage
+
+### Building and comparing regression models for prediction
+
+Before moving forward to think about logistic regression and generalized linear models, it is important to present approaches for building and comparing models.
+
+\vfill
+
+1. Include all input variables that, for substantive reasons, might be expected to be important in predicting the outcome.
+
+\vfill
+
+2. It is not always necessary to include these inputs as separate predictors 
+
+
+\vfill
+
+3. For inputs that have large effects, consider including their interactions as well.
+
+\vfill
+
+4. Use standard errors to get a sense of uncertainties in parameter estimates. Know these will change if new predictors are added to the model.
+
+\vfill
+
+5. Make decisions about including or excluding predictors based on a combination of contextual understanding (prior knowledge), data, and the uses of the regression model
+
+  a. If the coefficient of a predictor is estimated precisely, generally makes sense to keep it in the model
+  b. If the standard error is large and there seems to be no substantive reason to include it in the model, it can make sense to remove it.
+  c. If the predictor is important for the problem at hand (groups interested in comparing or controlling for), generally recommend keeping it in the model.
+  d. If a coefficient does not make sense (unexpected sign), try to understand how this could happen.
+  
+\vfill
+
+
+
+\vfill
+
+\newpage
+
+###  10 tips to improve your regression modeling
+
+From appendix B
+
+1. Think about variation and replication
+\vfill
+
+2. Forget about statistical significance
+\vfill
+
+3. Graph the relevant and not the irrelevant
+  a. Graph the fitted model
+  b. Make many graphs
+  c. Don't graph the irrelevant
+\vfill
+
+4. Interpret regression coefficients as comparisons
+
+\vfill
+
+5. Understand statistical methods using fake-data simulations
+
+\vfill
+
+6. Fit many models
+
+\vfill
+
+7. Set up a computational workflow
+  a. Data subsetting
+  b. Fake-data and predictive simulation
+  
+\vfill
+
+8. Use transformations
+
+\vfill
+
+9. Do causal inference in a targeted way
+
+\vfill
+
+10. Learn methods through live examples.
